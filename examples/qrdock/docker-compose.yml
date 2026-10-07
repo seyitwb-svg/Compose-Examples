@@ -1,0 +1,24 @@
+---
+services:
+
+  qrdock:
+    image: qrdock
+    build:
+      context: https://github.com/seyitwb-svg/qrdock.git
+    container_name: qrdock
+    restart: always
+    ports:
+      - 8128:8000/tcp # web ui
+    expose:
+      - 8000
+    volumes:
+      - ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/qrdock:/data
+    environment:
+      - TZ=Europe/Berlin
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.qrdock.rule=Host(`qrdock.example.com`)
+      - traefik.http.routers.qrdock.entrypoints=websecure
+      - traefik.http.routers.qrdock.tls.certresolver=cloudflare
+      - traefik.http.routers.qrdock.services.qrdock.loadbalancer.server.port=8000
+      - traefik.http.services.qrdock.loadbalancer.server.port=8000
