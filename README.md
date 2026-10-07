@@ -330,6 +330,7 @@ A [pastebin](https://en.wikipedia.org/wiki/Pastebin) is a type of online content
 
 - [YOURLS](examples/yourls) - The de-facto standard self hosted URL shortener in PHP.
 - [Kutt](examples/kutt) - Kutt is a modern URL shortener with support for custom domains, link editing, statistics, users management and more.
+- [QRDock](examples/qrdock) - Self-hosted QR code generator where codes double as retargetable short links with scan analytics, built on FastAPI + SQLite.
 
 ### Blogging Platforms and Homepages
 
